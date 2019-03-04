@@ -1,0 +1,49 @@
+#运行过程
+[root@knode1 php]# docker build -t wordpress:v1 .
+Sending build context to Docker daemon  3.072kB
+Step 1/11 : FROM centos:6
+ ---> 0cbf37812bff
+Step 2/11 : MAINTAINER zhangyage
+ ---> Using cache
+ ---> 32af56800ad2
+Step 3/11 : RUN yum -y install httpd php php-gd php-mysql mysql mysql-server
+ ---> Using cache
+ ---> 819b4d9f0fdf
+Step 4/11 : ENV MYSQL_ROOT_PASSWORD 123456
+ ---> Using cache
+ ---> 2babb37824da
+Step 5/11 : RUN echo "<?php phpinfo()?>" /var/www/html/index.php
+ ---> Using cache
+ ---> 8256edc1be93
+Step 6/11 : ADD start.sh /start.sh
+ ---> Using cache
+ ---> 584752bc8ae0
+Step 7/11 : RUN chmod +x /start.sh
+ ---> Using cache
+ ---> ff9d060c5e26
+Step 8/11 : ADD https://cn.wordpress.org/wordpress-4.7.4-zh_CN.tar.gz /var/www/html
+Downloading [==================================================>]  8.507MB/8.507MB
+
+ ---> d4a0f62aca06
+Step 9/11 : VOLUME ["/var/lib/mysql"]
+ ---> Running in 67f6512f9353
+Removing intermediate container 67f6512f9353
+ ---> ea0cb23ca2e5
+Step 10/11 : CMD /start.sh
+ ---> Running in ecf8d9e37819
+Removing intermediate container ecf8d9e37819
+ ---> 4a805b762b48
+Step 11/11 : EXPOSE 80 3306
+ ---> Running in 4d9c7101b709
+Removing intermediate container 4d9c7101b709
+ ---> a5a42ac307ff
+Successfully built a5a42ac307ff
+Successfully tagged wordpress:v1
+==========================================================================
+#生成容器
+[root@knode1 php]# docker run -itd --name wordpress -p 88:80 wordpress:v1
+
+==========================================================================
+直接在浏览器中访问ip:88端口：
+进行配置，会回的wp-config.php文件，继续操作
+
