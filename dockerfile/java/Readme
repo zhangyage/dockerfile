@@ -1,0 +1,39 @@
+运行的时候需要先创建目录将对应的资源文件准备一下：
+apache-tomcat-8.5.33.tar.gz
+jdk1.8.0_111.tar.gz
+
+
+[root@knode1 java]# docker build -t java:v1 .
+Sending build context to Docker daemon  191.1MB
+Step 1/8 : FROM centos:6
+ ---> 0cbf37812bff
+Step 2/8 : MAINTAINER zhangyage
+ ---> Using cache
+ ---> 32af56800ad2
+Step 3/8 : ADD jdk1.8.0_111.tar.gz /usr/local
+ ---> 3dcfd9b0d256
+Step 4/8 : ENV JAVA_HOME /usr/local/jdk1.8.0_111
+ ---> Running in 7786cd005ea2
+Removing intermediate container 7786cd005ea2
+ ---> 4f0acbfdac43
+Step 5/8 : ADD apache-tomcat-8.5.33.tar.gz /usr/local
+ ---> f67c417c5af0
+Step 6/8 : WORKDIR /usr/local/apache-tomcat-8.5.33
+ ---> Running in c0ed5adfc5b7
+Removing intermediate container c0ed5adfc5b7
+ ---> 3beca80864e9
+Step 7/8 : ENTRYPOINT ["bin/catalina.sh","run"]
+ ---> Running in 49eaeba14091
+Removing intermediate container 49eaeba14091
+ ---> 897eff79e045
+Step 8/8 : EXPOSE 8080
+ ---> Running in 9e2c80195dac
+Removing intermediate container 9e2c80195dac
+ ---> fd8274c451b5
+Successfully built fd8274c451b5
+Successfully tagged java:v1
+
+==========================================================================
+[root@knode1 java]# docker run -itd --name java -p 8080:8080 java:v1
+85b93b1c71d707d9bab6042538a2730e0afdcc463de17ffb22ffeb9912d9d745
+==========================================================================
