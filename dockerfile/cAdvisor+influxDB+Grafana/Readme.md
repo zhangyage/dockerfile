@@ -39,7 +39,8 @@ Status: Downloaded newer image for docker.io/tutum/influxdb:latest
 [root@node3 ~]# docker run -d -p 8083:8083 -p 8086:8086 --name influxdb tutum/influxdb
 362440d2a102710b5ccbe1cf30433e4467066ab31422de092ce4c764e44c2114
 
-![influxdb数据配置](https://github.com/zhangyage/dockerfile/blob/master/dockerfile/cAdvisor%2BinfluxDB%2BGrafana/influxDB.png)
+![influxdb数据配置](https://github.com/zhangyage/dockerfile/blob/master/dockerfile/cAdvisor%2BinfluxDB%2BGrafana/influxdb-1.png)
+![influxdb数据配置](https://github.com/zhangyage/dockerfile/blob/master/dockerfile/cAdvisor%2BinfluxDB%2BGrafana/influxdb-2.png)
 
 #创建用户名和密码，数据库都是cadvisor
 
