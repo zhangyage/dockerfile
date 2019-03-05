@@ -59,8 +59,8 @@ Status: Downloaded newer image for docker.io/google/cadvisor:latest
 #启动报错：
 
 W0305 13:48:21.200292       1 manager.go:349] Could not configure a source for OOM detection, disabling OOM events: open /dev/kmsg: no such file or directory
-F0305 13:48:21.254704       
-1 cadvisor.go:172] Failed to start container manager: inotify_add_watch /sys/fs/cgroup/cpuacct,cpu: no such file or directory
+
+F0305 13:48:21.254704       1 cadvisor.go:172] Failed to start container manager: inotify_add_watch /sys/fs/cgroup/cpuacct,cpu: no such file or directory
 
 #解决方法
 
