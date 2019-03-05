@@ -21,7 +21,7 @@ Status: Downloaded newer image for docker.io/tutum/influxdb:latest
 [root@node3 ~]# docker run -d -p 8083:8083 -p 8086:8086 --name influxdb tutum/influxdb
 362440d2a102710b5ccbe1cf30433e4467066ab31422de092ce4c764e44c2114
 
-!(https://github.com/zhangyage/dockerfile/blob/master/dockerfile/cAdvisor%2BinfluxDB%2BGrafana/influxDB.png)
+![influxdb数据配置](https://github.com/zhangyage/dockerfile/blob/master/dockerfile/cAdvisor%2BinfluxDB%2BGrafana/influxDB.png)
 
 #创建用户名和密码，数据库都是cAdvisor
 
@@ -61,7 +61,7 @@ F0305 13:48:21.254704       1 cadvisor.go:172] Failed to start container manager
 [root@node3 ]# ln -s /sys/fs/cgroup/cpu,cpuacct /sys/fs/cgroup/cpuacct,cpu
 
 #再次启动容器：
-https://github.com/zhangyage/dockerfile/blob/master/dockerfile/cAdvisor%2BinfluxDB%2BGrafana/cAdvisor.png
+![cAdvisor图表](https://github.com/zhangyage/dockerfile/blob/master/dockerfile/cAdvisor%2BinfluxDB%2BGrafana/cAdvisor.png)
 
 #访问测试
 
