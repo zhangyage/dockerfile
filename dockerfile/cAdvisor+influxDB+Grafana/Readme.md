@@ -50,14 +50,17 @@ Status: Downloaded newer image for docker.io/google/cadvisor:latest
 992958c1035eda7ffa65147ca07b8a569d73f78335340a410ca1702f379adb53
 
 [root@node3 ]# docker run -d --volume=/:/rootfs:ro --volume=/var/run:/var/run:rw --volume=/sys:/sys:ro --volume=/var/lib/docker/:/var/lib/docker:ro --link influxdb:influxdb  -p 8081:8080 --name=cadvisor google/cadvisor --storage_driver=influxdb --storage_driver_db=cAdvisor --storage_driver_host=influxdb:8086
+
 #启动报错：
 W0305 13:48:21.200292       1 manager.go:349] Could not configure a source for OOM detection, disabling OOM events: open /dev/kmsg: no such file or directory
 F0305 13:48:21.254704       1 cadvisor.go:172] Failed to start container manager: inotify_add_watch /sys/fs/cgroup/cpuacct,cpu: no such file or directory
+
 #解决方法
 [root@node3 ]# mount -o remount,rw '/sys/fs/cgroup'
 [root@node3 ]# ln -s /sys/fs/cgroup/cpu,cpuacct /sys/fs/cgroup/cpuacct,cpu
+
 #再次启动容器：
-!(https://github.com/zhangyage/dockerfile/blob/master/dockerfile/cAdvisor%2BinfluxDB%2BGrafana/cAdvisor.png)
+https://github.com/zhangyage/dockerfile/blob/master/dockerfile/cAdvisor%2BinfluxDB%2BGrafana/cAdvisor.png
 #访问测试
 
 #下载容器
