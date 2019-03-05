@@ -41,7 +41,7 @@ Status: Downloaded newer image for docker.io/tutum/influxdb:latest
 
 ![influxdb数据配置](https://github.com/zhangyage/dockerfile/blob/master/dockerfile/cAdvisor%2BinfluxDB%2BGrafana/influxDB.png)
 
-#创建用户名和密码，数据库都是cAdvisor
+#创建用户名和密码，数据库都是cadvisor
 
 #获取容器镜像
 
@@ -75,11 +75,11 @@ Status: Downloaded newer image for docker.io/google/cadvisor:latest
 > --name=cadvisor \
 > google/cadvisor \
 > --storage_driver=influxdb \
-> --storage_driver_db=cAdvisor \
+> --storage_driver_db=cadvisor \
 > --storage_driver_host=influxdb:8086
 992958c1035eda7ffa65147ca07b8a569d73f78335340a410ca1702f379adb53
 
-[root@node3 ]# docker run -d --volume=/:/rootfs:ro --volume=/var/run:/var/run:rw --volume=/sys:/sys:ro --volume=/var/lib/docker/:/var/lib/docker:ro --link influxdb:influxdb  -p 8081:8080 --name=cadvisor google/cadvisor --storage_driver=influxdb --storage_driver_db=cAdvisor --storage_driver_host=influxdb:8086
+[root@node3 ]# docker run -d --volume=/:/rootfs:ro --volume=/var/run:/var/run:rw --volume=/sys:/sys:ro --volume=/var/lib/docker/:/var/lib/docker:ro --link influxdb:influxdb  -p 8081:8080 --name=cadvisor google/cadvisor --storage_driver=influxdb --storage_driver_db=cadvisor --storage_driver_host=influxdb:8086
 
 #启动报错：
 
@@ -90,6 +90,7 @@ F0305 13:48:21.254704       1 cadvisor.go:172] Failed to start container manager
 #解决方法
 
 [root@node3 ]# mount -o remount,rw '/sys/fs/cgroup'
+
 [root@node3 ]# ln -s /sys/fs/cgroup/cpu,cpuacct /sys/fs/cgroup/cpuacct,cpu
 
 #再次启动容器：
@@ -125,7 +126,7 @@ Status: Downloaded newer image for docker.io/grafana/grafana:latest
 
 #启动容器：
 
-[root@node3 cAdvisor+influxDB+Grafana]# docker run -d -p 3000:3000 -e INFLUXDB_HOST=localhost -e INFLUXDB_PORT=8086 -e INFLUXDB_NAME=cAdvisor -e INFLUXDB_USER=cAdvisor -e INFLUXDB_PASS=cAdvisor --link influxdb:influxdb --name grafana grafana/grafana:latest
+[root@node3 cAdvisor+influxDB+Grafana]# docker run -d -p 3000:3000 -e INFLUXDB_HOST=influxdb -e INFLUXDB_PORT=8086 -e INFLUXDB_NAME=cadvisor -e INFLUXDB_USER=cadvisor -e INFLUXDB_PASS=cadvisor --link influxdb:influxdb --name grafana grafana/grafana:latest
 33f8d5f7ce3686620ad07472629a464e8633febb5695dd411725d61995e1d632
 
 #配置数据源和图表
