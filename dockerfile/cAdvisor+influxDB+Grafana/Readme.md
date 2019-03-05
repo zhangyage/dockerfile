@@ -85,6 +85,7 @@ f468bc355c1c: Pull complete
 d0bc3461ab2a: Pull complete 
 Digest: sha256:87dc722ba3f898b4c390a1af3139f061e813c2b11f303a6bd96690f667e48a88
 Status: Downloaded newer image for docker.io/grafana/grafana:latest
+
 #启动容器：
 
 [root@node3 cAdvisor+influxDB+Grafana]# docker run -d -p 3000:3000 -e INFLUXDB_HOST=localhost -e INFLUXDB_PORT=8086 -e INFLUXDB_NAME=cAdvisor -e INFLUXDB_USER=cAdvisor -e INFLUXDB_PASS=cAdvisor --link influxdb:influxdb --name grafana grafana/grafana:latest
