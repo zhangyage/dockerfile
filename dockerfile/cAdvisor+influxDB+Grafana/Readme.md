@@ -22,6 +22,7 @@ Status: Downloaded newer image for docker.io/tutum/influxdb:latest
 362440d2a102710b5ccbe1cf30433e4467066ab31422de092ce4c764e44c2114
 
 !(https://github.com/zhangyage/dockerfile/blob/master/dockerfile/cAdvisor%2BinfluxDB%2BGrafana/influxDB.png)
+
 #创建用户名和密码，数据库都是cAdvisor
 
 #获取容器镜像
@@ -61,6 +62,7 @@ F0305 13:48:21.254704       1 cadvisor.go:172] Failed to start container manager
 
 #再次启动容器：
 https://github.com/zhangyage/dockerfile/blob/master/dockerfile/cAdvisor%2BinfluxDB%2BGrafana/cAdvisor.png
+
 #访问测试
 
 #下载容器
@@ -81,5 +83,5 @@ Status: Downloaded newer image for docker.io/grafana/grafana:latest
 33f8d5f7ce3686620ad07472629a464e8633febb5695dd411725d61995e1d632
 
 #配置数据源和图表
-!(https://github.com/zhangyage/dockerfile/blob/master/dockerfile/cAdvisor%2BinfluxDB%2BGrafana/Grafana.png)
+![配置数据源和图表](https://github.com/zhangyage/dockerfile/blob/master/dockerfile/cAdvisor%2BinfluxDB%2BGrafana/Grafana.png)
 
