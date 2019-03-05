@@ -1,0 +1,67 @@
+#下载镜像
+[root@node3 ~]# docker pull registry
+Using default tag: latest
+Trying to pull repository docker.io/library/registry ... 
+latest: Pulling from docker.io/library/registry
+169185f82c45: Pull complete 
+046e2d030894: Pull complete 
+188836fddeeb: Pull complete 
+832744537747: Pull complete 
+7ceea07e80be: Pull complete 
+Digest: sha256:870474507964d8e7d8c3b53bcfa738e3356d2747a42adad26d0d81ef4479eb1b
+Status: Downloaded newer image for docker.io/registry:latest
+===============================================================================
+#运行启动镜像
+[root@node3 ~]# docker run -d -v /opt/registry:/var/lib/registry -p 5000:5000 --restart=always --name registry registry
+8383c44cfd3598315a22cdd36d0c15380e04fc744793d273e69d1b4c5b47ab44
+
+--restart=always   重启
+
+
+#可以查看一下是否有镜像存在
+[root@node3 ~]# curl http://192.168.32.138:5000/v2/_catalog
+{"repositories":[]}
+
+#将本地镜像仓库中的镜像打tag
+[root@node3 ~]# docker tag mysql:v1 192.168.32.138:5000/mysql:v1
+
+#将镜像上传到镜像仓库
+[root@node3 ~]# docker push 192.168.32.138:5000/mysql:v1
+The push refers to a repository [192.168.32.138:5000/mysql]
+Get https://192.168.32.138:5000/v1/_ping: http: server gave HTTP response to HTTPS client
+
+#报错  需要https支持，或者是不收信任，我们添加一下信任
+[root@node3 ~]# vim /etc/docker/daemon.json 
+[root@node3 ~]# cat /etc/docker/daemon.json 
+{"insecure-registries":["192.168.32.138:5000"]}
+
+#重启服务
+[root@node3 ~]# systemctl restart docker 
+
+#再次上传
+[root@node3 ~]# docker push 192.168.32.138:5000/mysql:v1
+The push refers to a repository [192.168.32.138:5000/mysql]
+6e4a6c599b1d: Pushed 
+3aa676232fff: Pushed 
+8103990ddb33: Pushed 
+a1cb89945ac3: Pushed 
+506f749581f6: Pushed 
+5d6846033b0c: Pushed 
+73ea790d3afa: Pushed 
+7d390c8db6fd: Pushed 
+7756685f09e9: Pushed 
+7412b239e6a1: Pushed 
+3d33930b279a: Pushed 
+0a07e81f5da3: Pushed 
+v1: digest: sha256:8c7d6df5e7b7c41530d9a3569145e30be0c2e919a29f7b3bcf040a74b092c887 size: 2828
+#再次测试一下api接口
+[root@node3 ~]# curl http://192.168.32.138:5000/v2/_catalog
+{"repositories":["mysql"]}
+
+#下载镜像
+root@node3 ~]# docker pull 192.168.32.138:5000/mysql:v1
+Trying to pull repository 192.168.32.138:5000/mysql ... 
+v1: Pulling from 192.168.32.138:5000/mysql
+Digest: sha256:8c7d6df5e7b7c41530d9a3569145e30be0c2e919a29f7b3bcf040a74b092c887
+Status: Downloaded newer image for 192.168.32.138:5000/mysql:v1
+
