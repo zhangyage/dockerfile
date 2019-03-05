@@ -40,7 +40,10 @@ Status: Downloaded newer image for docker.io/tutum/influxdb:latest
 362440d2a102710b5ccbe1cf30433e4467066ab31422de092ce4c764e44c2114
 
 ![influxdb数据配置](https://github.com/zhangyage/dockerfile/blob/master/dockerfile/cAdvisor%2BinfluxDB%2BGrafana/influxdb-1.png)
+CREATE USER "cadvisor" WITH PASSWORD 'cadvisor' WITH ALL PRIVILEGES
+
 ![influxdb数据配置](https://github.com/zhangyage/dockerfile/blob/master/dockerfile/cAdvisor%2BinfluxDB%2BGrafana/influxdb-2.png)
+CREATE DATABASE "cadvisor"
 
 #创建用户名和密码，数据库都是cadvisor
 
@@ -81,6 +84,8 @@ Status: Downloaded newer image for docker.io/google/cadvisor:latest
 992958c1035eda7ffa65147ca07b8a569d73f78335340a410ca1702f379adb53
 
 [root@node3 ]# docker run -d --volume=/:/rootfs:ro --volume=/var/run:/var/run:rw --volume=/sys:/sys:ro --volume=/var/lib/docker/:/var/lib/docker:ro --link influxdb:influxdb  -p 8081:8080 --name=cadvisor google/cadvisor --storage_driver=influxdb --storage_driver_db=cadvisor --storage_driver_host=influxdb:8086
+
+docker run -d --volume=/:/rootfs:ro --volume=/var/run:/var/run:rw --volume=/sys:/sys:ro --volume=/var/lib/docker/:/var/lib/docker:ro --link influxdb:influxdb -p 8081:8080 --name=cadvisor google/cadvisor --storage_driver=influxdb --storage_driver_db=cadvisor --storage_driver_user=cadvisor --storage_driver_password=cadvisor --storage_driver_host=influxdb:8086
 
 #启动报错：
 
