@@ -1,37 +1,23 @@
+友情提示：在操作这一切前，首先同步一下你服务器的时间，要不你的grafana的线是不会出来的
+
 #下载镜像
 
 [root@node3 ~]# docker pull tutum/influxdb
-
 Using default tag: latest
-
 Trying to pull repository docker.io/tutum/influxdb ...
-
 latest: Pulling from docker.io/tutum/influxdb
-
 a3ed95caeb02: Pull complete
-
 23efb549476f: Pull complete
-
 aa2f8df21433: Pull complete
-
 ef072d3c9b41: Pull complete
-
 c9f371853f28: Pull complete
-
 a248b0871c3c: Pull complete
-
 749db6d368d0: Pull complete
-
 db2492acfcc3: Pull complete
-
 b7e7d2e12d53: Pull complete
-
 4272a53eef10: Pull complete
-
 9b2fefdb5321: Pull complete
-
 Digest: sha256:5b7c5e318303ad059f3d1a73d084c12cb39ae4f35f7391b79b0ff2c0ba45304b
-
 Status: Downloaded newer image for docker.io/tutum/influxdb:latest
 
 #运行influxdb容器
@@ -50,21 +36,13 @@ CREATE DATABASE "cadvisor"
 #获取容器镜像
 
 [root@node3 cAdvisor+influxDB+Grafana]# docker pull google/cadvisor
-
 Using default tag: latest
-
 Trying to pull repository docker.io/google/cadvisor ... 
-
 latest: Pulling from docker.io/google/cadvisor
-
 ff3a5c916c92: Pull complete 
-
 44a45bb65cdf: Pull complete 
-
 0bbe1a2fe2a6: Pull complete 
-
 Digest: sha256:815386ebbe9a3490f38785ab11bda34ec8dacf4634af77b8912832d4f85dca04
-
 Status: Downloaded newer image for docker.io/google/cadvisor:latest
 
 #运行
@@ -107,27 +85,16 @@ F0305 13:48:21.254704       1 cadvisor.go:172] Failed to start container manager
 #下载容器
 
 [root@node3 cAdvisor+influxDB+Grafana]# docker pull grafana/grafana
-
 Using default tag: latest
-
-Trying to pull repository docker.io/grafana/grafana ... 
-
+trying to pull repository docker.io/grafana/grafana ... 
 latest: Pulling from docker.io/grafana/grafana
-
 6ae821421a7d: Already exists 
-
 6f1f7859419b: Pull complete 
-
 f468bc355c1c: Pull complete 
-
 9f5203ca6afb: Pull complete 
-
 1ae79fd57b87: Pull complete 
-
 d0bc3461ab2a: Pull complete 
-
 Digest: sha256:87dc722ba3f898b4c390a1af3139f061e813c2b11f303a6bd96690f667e48a88
-
 Status: Downloaded newer image for docker.io/grafana/grafana:latest
 
 #启动容器：
