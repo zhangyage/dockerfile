@@ -3,6 +3,7 @@
 #下载镜像
 
 [root@node3 ~]# docker pull tutum/influxdb
+
 Using default tag: latest
 Trying to pull repository docker.io/tutum/influxdb ...
 latest: Pulling from docker.io/tutum/influxdb
@@ -36,6 +37,7 @@ CREATE DATABASE "cadvisor"
 #获取容器镜像
 
 [root@node3 cAdvisor+influxDB+Grafana]# docker pull google/cadvisor
+
 Using default tag: latest
 Trying to pull repository docker.io/google/cadvisor ... 
 latest: Pulling from docker.io/google/cadvisor
@@ -85,6 +87,7 @@ F0305 13:48:21.254704       1 cadvisor.go:172] Failed to start container manager
 #下载容器
 
 [root@node3 cAdvisor+influxDB+Grafana]# docker pull grafana/grafana
+
 Using default tag: latest
 trying to pull repository docker.io/grafana/grafana ... 
 latest: Pulling from docker.io/grafana/grafana
