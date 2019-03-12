@@ -58,6 +58,7 @@ https://localhost:19443/healthz
 The returned message looks like `Greeting from <hostname>`, where the `hostname` is the value specified by `--hostname` option when launch the docker container.
 
 ### Launch Load Balancers
+![haproxy](https://github.com/zhangyage/dockerfile/blob/master/dockerfile/lab-load-balance/docs/images/architecture.png)
 
 Launch two docker containers for the image `morningspace/lab-lb` as load balancers:
 ```
@@ -165,7 +166,7 @@ Run `curl` in either of the two load balancer containers. Send request to the vi
 ```
 curl -XGET http://<virtual_ip>:8080/healthz
 ```
-![测试图](https://github.com/zhangyage/dockerfile/tree/master/dockerfile/lab-load-balance/docs/images/test_web.png)
+![测试图](https://github.com/zhangyage/dockerfile/blob/master/dockerfile/lab-load-balance/docs/images/test_web.png)
 And ssl is enabled:
 ```
 curl --insecure --cert /etc/ssl/certs/my.crt --key /etc/ssl/private/my.key -XGET https://<virtual_ip>:8443/healthz
