@@ -83,7 +83,11 @@ prometheus --config.file=/root/Prometheus+Grafana+cAdvisor/prometheus-2.8.0-rc.0
 # systemctl restart grafana-server
 # netstat -anp | grep gra
 ```
-浏览器访问：
+### 启动服务：
+```
+systemctl start grafana-server
+```
+##### 浏览器访问：
 http://ip:3000
 ![grafana2](https://github.com/zhangyage/dockerfile/blob/master/dockerfile/Prometheus%2BGrafana%2BcAdvisor/image/grafana2.png)
 ![grafana2](https://github.com/zhangyage/dockerfile/blob/master/dockerfile/Prometheus%2BGrafana%2BcAdvisor/image/grafana3.png)
