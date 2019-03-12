@@ -25,7 +25,7 @@ https://prometheus.io/
 # cp -a prometheus /usr/bin/
 # cp -a promtool /usr/bin/
 ```
-![prometheus](https://github.com/zhangyage/dockerfile/blob/master/dockerfile/Prometheus%2BGrafana%2BcAdvisor/image/prometheus.png)
+
 修改配置文件：
 ```
 [root@node3 prometheus]# cat prometheus.yml 
@@ -63,7 +63,7 @@ scrape_configs:
     static_configs:
     - targets: ['192.168.32.138:8080']
 ```
-# 注意：- targets: ['192.168.32.138:8080']  当有多个docker宿主机的话，在宿主机中启动cadvisor后在这个配置中添加，如下：
+##### 注意：- targets: ['192.168.32.138:8080']  当有多个docker宿主机的话，在宿主机中启动cadvisor后在这个配置中添加，如下：
 ```
 - targets: ['192.168.32.138:8080','192.168.32.137:8080']
 ```
@@ -74,6 +74,8 @@ scrape_configs:
 prometheus --config.file=/root/Prometheus+Grafana+cAdvisor/prometheus-2.8.0-rc.0.linux-amd64/prometheus.yml
 ```
 制定对应的配置文件
+访问测试
+![prometheus](https://github.com/zhangyage/dockerfile/blob/master/dockerfile/Prometheus%2BGrafana%2BcAdvisor/image/prometheus.png)
 
 ### grafana
 ```
