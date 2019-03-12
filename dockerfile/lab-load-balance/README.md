@@ -1,7 +1,7 @@
 ## 小张的基地
 
 
-[![](https://github.com/zhangyage/dockerfile/tree/master/dockerfile/lab-load-balance/docs/images/banner.png)](https://github.io/zhangyage)
+![banner](https://github.com/zhangyage/dockerfile/tree/master/dockerfile/lab-load-balance/docs/images/banner.png)
 
 # HAProxy + Keepalived: Build Your Load Balancer in 30 Minutes!
 
