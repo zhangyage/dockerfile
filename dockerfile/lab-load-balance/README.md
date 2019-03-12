@@ -1,7 +1,7 @@
 ## 小张的基地
 
 
-[![](https://github.com/zhangyage/lab-load-balance/blob/master/lab-load-balance/docs/images/banner.png)](https://github.io/zhangyage)
+[![](https://github.com/zhangyage/dockerfile/tree/master/dockerfile/lab-load-balance/docs/images/banner.png)](https://github.io/zhangyage)
 
 # HAProxy + Keepalived: Build Your Load Balancer in 30 Minutes!
 
@@ -165,7 +165,7 @@ Run `curl` in either of the two load balancer containers. Send request to the vi
 ```
 curl -XGET http://<virtual_ip>:8080/healthz
 ```
-![测试图](https://github.com/zhangyage/lab-load-balance/blob/master/lab-load-balance/docs/images/test_web.png)
+![测试图](https://github.com/zhangyage/dockerfile/tree/master/dockerfile/lab-load-balance/docs/images/test_web.png)
 And ssl is enabled:
 ```
 curl --insecure --cert /etc/ssl/certs/my.crt --key /etc/ssl/private/my.key -XGET https://<virtual_ip>:8443/healthz
